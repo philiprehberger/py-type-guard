@@ -1,5 +1,9 @@
 # philiprehberger-type-guard
 
+[![Tests](https://github.com/philiprehberger/py-type-guard/actions/workflows/publish.yml/badge.svg)](https://github.com/philiprehberger/py-type-guard/actions/workflows/publish.yml)
+[![PyPI version](https://img.shields.io/pypi/v/philiprehberger-type-guard.svg)](https://pypi.org/project/philiprehberger-type-guard/)
+[![License](https://img.shields.io/github/license/philiprehberger/py-type-guard)](LICENSE)
+
 Runtime type checking decorators for function arguments.
 
 ## Installation
