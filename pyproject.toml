@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-type-guard"
-version = "0.1.5"
+version = "0.1.6"
 description = "Runtime type checking decorators for function arguments"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 authors = [{ name = "Philip Rehberger" }]
-keywords = ["type", "guard", "validation", "runtime", "typing", "decorator"]
+keywords = ["type", "guard", "validation", "runtime", "decorator"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -31,3 +31,9 @@ Changelog = "https://github.com/philiprehberger/py-type-guard/blob/main/CHANGELO
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/philiprehberger_type_guard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true

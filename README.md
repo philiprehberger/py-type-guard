@@ -76,9 +76,11 @@ except TypeGuardError as e:
 
 ## API
 
-- `@guard` / `@guard(enabled=True)` — Decorator for runtime type checking
-- `enable()` / `disable()` — Global toggle
-- `TypeGuardError` — Raised on type mismatch (subclass of `TypeError`)
+| Function / Class | Description |
+|------------------|-------------|
+| `@guard` / `@guard(enabled=True)` | Decorator for runtime type checking |
+| `enable()` / `disable()` | Global toggle |
+| `TypeGuardError` | Raised on type mismatch (subclass of `TypeError`) |
 
 ## Development
 
