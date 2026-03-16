@@ -80,6 +80,14 @@ except TypeGuardError as e:
 - `enable()` / `disable()` — Global toggle
 - `TypeGuardError` — Raised on type mismatch (subclass of `TypeError`)
 
+
+## Development
+
+```bash
+pip install -e .
+python -m pytest tests/ -v
+```
+
 ## License
 
 MIT
