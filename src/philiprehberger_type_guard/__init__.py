@@ -14,6 +14,8 @@ __all__ = [
     "TypeGuardError",
     "enable",
     "disable",
+    "is_type",
+    "assert_type",
 ]
 
 _enabled: bool = True
@@ -44,6 +46,31 @@ def disable() -> None:
     """Disable runtime type checking globally."""
     global _enabled
     _enabled = False
+
+
+def is_type(value: Any, expected: Any) -> bool:
+    """Return True when *value* matches *expected*.
+
+    Non-raising counterpart to assert_type. Uses the same type-matching
+    logic as the @guard decorator (supports generics, Union, Optional).
+    """
+    return _check_type(value, expected)
+
+
+def assert_type(value: Any, expected: Any, *, name: str = "value") -> None:
+    """Raise TypeGuardError if *value* does not match *expected*.
+
+    Honors the global enable/disable toggle just like @guard.
+    """
+    if not _enabled:
+        return
+    if not _check_type(value, expected):
+        raise TypeGuardError(
+            param=name,
+            expected=_type_name(expected),
+            actual=type(value),
+            value=value,
+        )
 
 
 def guard(

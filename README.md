@@ -51,6 +51,25 @@ flexible(None)   # OK
 flexible(3.14)   # TypeGuardError
 ```
 
+### Non-raising and assertion checks
+
+For one-off checks outside the `@guard` decorator, use `is_type()` (boolean) or `assert_type()` (raises on mismatch).
+
+```python
+from philiprehberger_type_guard import is_type, assert_type
+
+is_type(5, int)              # True
+is_type("x", int)            # False
+is_type([1, 2], list[int])   # True
+is_type(None, int | None)    # True
+
+assert_type(5, int)                       # returns None
+assert_type("x", int)                     # raises TypeGuardError
+assert_type("x", int, name="user_id")     # custom name in message
+```
+
+`assert_type()` honors the global `enable()` / `disable()` toggle.
+
 ### Global Toggle
 
 ```python
@@ -79,6 +98,8 @@ except TypeGuardError as e:
 | Function / Class | Description |
 |------------------|-------------|
 | `@guard` / `@guard(enabled=True)` | Decorator for runtime type checking |
+| `is_type(value, expected)` | Non-raising check; returns `True` / `False` |
+| `assert_type(value, expected, name="value")` | Raises `TypeGuardError` if `value` does not match `expected` |
 | `enable()` / `disable()` | Global toggle |
 | `TypeGuardError` | Raised on type mismatch (subclass of `TypeError`) |
 
